@@ -1,0 +1,40 @@
+CREATE TABLE famous_people (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    age INTEGER);
+    
+INSERT INTO famous_people (fullname, age) VALUES ("Konique Ramlugan", "26");
+INSERT INTO famous_people (fullname, age) VALUES ("Pranay Ramlugan", "27");
+INSERT INTO famous_people (fullname, age) VALUES ("Ruwain Naidoo", "28");
+INSERT INTO famous_people (fullname, age) VALUES ("Priyanka Ramlugan", "31");
+INSERT INTO famous_people (fullname, age) VALUES ("Zoe Naidoo", "10");
+
+CREATE TABLE jobs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    famous_people_id INTEGER,
+    title TEXT);
+    
+  INSERT INTO jobs (famous_people_id, title) VALUES ("1", "singer");
+INSERT INTO jobs (famous_people_id, title) VALUES ("2", "movie_star");
+INSERT INTO jobs (famous_people_id, title) VALUES ("3", "author");
+INSERT INTO jobs (famous_people_id, title) VALUES ("4", "actress");
+INSERT INTO jobs (famous_people_id, title) VALUES ("5", "fictional_character");  
+
+CREATE TABLE projects (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    famous_people_id INTEGER,
+    project_name TEXT);
+    
+INSERT INTO projects (famous_people_id, project_name) VALUES ("1", "Water");
+INSERT INTO projects (famous_people_id, project_name) VALUES ("2", "The_OC");
+INSERT INTO projects (famous_people_id, project_name) VALUES ("3", "Sweet_divine");
+INSERT INTO projects (famous_people_id, project_name) VALUES ("4", "Burn");
+INSERT INTO projects (famous_people_id, project_name) VALUES ("5", "Vampire");
+
+#Join all tables 
+SELECT famous_people.fullname , jobs.title, projects.project_name
+FROM famous_people
+JOIN jobs
+ON famous_people.id=jobs.famous_people_id
+JOIN projects
+ON famous_people.id= projects.famous_people_id;
